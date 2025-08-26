@@ -5,6 +5,7 @@ describe('OpenHRM Login', () => {
     );
     cy.get('input[placeholder="Username"]').type("Admin");
     cy.get('input[placeholder="Password"]').type("admin123");
+    // chal bhaiu
     cy.get('button[type="submit"]').click();
     cy.get('.oxd-userdropdown-tab').should('be.visible')
   })
