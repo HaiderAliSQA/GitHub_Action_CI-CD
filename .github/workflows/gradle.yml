@@ -20,7 +20,10 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci   # Faster and clean install using package-lock.json
+
+      - name: Verify Cypress install
+        run: npx cypress --version
 
       - name: Run Cypress tests
         run: npx cypress run
