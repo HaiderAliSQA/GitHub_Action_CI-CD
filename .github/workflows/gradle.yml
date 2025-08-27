@@ -9,6 +9,7 @@ on:
 jobs:
   cypress-run:
     runs-on: windows-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repo
@@ -29,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clean old reports
+        run: rm -rf cypress/reports/html && rm -rf cypress/reports/final
+
       - name: Run Cypress tests
         run: npx cypress run
 
@@ -39,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-html-report
-          path: cypress/reports/final
+          path: cypress/reports/final/index.html
