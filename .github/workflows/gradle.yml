@@ -31,7 +31,9 @@ jobs:
         run: npm ci
 
       - name: Clean old reports
-        run: rm -rf cypress/reports/html && rm -rf cypress/reports/final
+        run: |
+          if (Test-Path "cypress/reports/html") { Remove-Item -Recurse -Force "cypress/reports/html" }
+          if (Test-Path "cypress/reports/final") { Remove-Item -Recurse -Force "cypress/reports/final" }
 
       - name: Run Cypress tests
         run: npx cypress run
